@@ -1,0 +1,14 @@
+name: Backup repository
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Backup repository
+        run: |
+          git clone --mirror . ./backup
+
